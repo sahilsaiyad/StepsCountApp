@@ -19,6 +19,11 @@
 		4AC589822C7DC8C500543FA8 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC589812C7DC8C500543FA8 /* AppConfig.swift */; };
 		4AC589862C7DCF3300543FA8 /* JSONStepCountDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC589852C7DCF3300543FA8 /* JSONStepCountDataSource.swift */; };
 		4AC589882C7DCF5100543FA8 /* HealthKitStepCountDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC589872C7DCF5100543FA8 /* HealthKitStepCountDataSource.swift */; };
+		A41D9C4F2C8073D6006B9B97 /* QuerySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C4E2C8073D5006B9B97 /* QuerySelector.swift */; };
+		A41D9C512C807430006B9B97 /* StepCountChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C502C807430006B9B97 /* StepCountChart.swift */; };
+		A41D9C532C807566006B9B97 /* StepCountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C522C807566006B9B97 /* StepCountDetailView.swift */; };
+		A41D9C552C8075D4006B9B97 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C542C8075D4006B9B97 /* ErrorView.swift */; };
+		A472A9312C7FB01A0091DA58 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472A9302C7FB01A0091DA58 /* Query.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,11 @@
 		4AC589842C7DCEAA00543FA8 /* BVOY Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BVOY Demo.entitlements"; sourceTree = "<group>"; };
 		4AC589852C7DCF3300543FA8 /* JSONStepCountDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStepCountDataSource.swift; sourceTree = "<group>"; };
 		4AC589872C7DCF5100543FA8 /* HealthKitStepCountDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitStepCountDataSource.swift; sourceTree = "<group>"; };
+		A41D9C4E2C8073D5006B9B97 /* QuerySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuerySelector.swift; sourceTree = "<group>"; };
+		A41D9C502C807430006B9B97 /* StepCountChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCountChart.swift; sourceTree = "<group>"; };
+		A41D9C522C807566006B9B97 /* StepCountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCountDetailView.swift; sourceTree = "<group>"; };
+		A41D9C542C8075D4006B9B97 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A472A9302C7FB01A0091DA58 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,18 +79,16 @@
 		4AC589682C7DB1E900543FA8 /* BVOY Demo */ = {
 			isa = PBXGroup;
 			children = (
+				A47383162C80875900ADFBBD /* View Models */,
+				A47383152C8086F400ADFBBD /* Models */,
+				A47383142C8086DA00ADFBBD /* DataSource */,
+				A47383132C8086C600ADFBBD /* Views */,
 				4AC589842C7DCEAA00543FA8 /* BVOY Demo.entitlements */,
 				4AC589832C7DCE7B00543FA8 /* BVOY-Demo-Info.plist */,
 				4AC589692C7DB1E900543FA8 /* BVOY_DemoApp.swift */,
 				4AC5896B2C7DB1E900543FA8 /* ContentView.swift */,
 				4AC5896D2C7DB1EA00543FA8 /* Assets.xcassets */,
 				4AC5896F2C7DB1EA00543FA8 /* Preview Content */,
-				4AC589772C7DB22200543FA8 /* StepCountModel.swift */,
-				4AC589792C7DB2F700543FA8 /* StepCountDataSource.swift */,
-				4AC589872C7DCF5100543FA8 /* HealthKitStepCountDataSource.swift */,
-				4AC589852C7DCF3300543FA8 /* JSONStepCountDataSource.swift */,
-				4AC5897B2C7DB33C00543FA8 /* StepCountRepository.swift */,
-				4AC5897D2C7DB3B900543FA8 /* StepCountViewModel.swift */,
 				4AC5897F2C7DC61600543FA8 /* StepCounts.json */,
 				4AC589812C7DC8C500543FA8 /* AppConfig.swift */,
 			);
@@ -93,6 +101,45 @@
 				4AC589702C7DB1EA00543FA8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A47383132C8086C600ADFBBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A41D9C4E2C8073D5006B9B97 /* QuerySelector.swift */,
+				A41D9C502C807430006B9B97 /* StepCountChart.swift */,
+				A41D9C522C807566006B9B97 /* StepCountDetailView.swift */,
+				A41D9C542C8075D4006B9B97 /* ErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A47383142C8086DA00ADFBBD /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4AC5897B2C7DB33C00543FA8 /* StepCountRepository.swift */,
+				4AC589792C7DB2F700543FA8 /* StepCountDataSource.swift */,
+				4AC589872C7DCF5100543FA8 /* HealthKitStepCountDataSource.swift */,
+				4AC589852C7DCF3300543FA8 /* JSONStepCountDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		A47383152C8086F400ADFBBD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AC589772C7DB22200543FA8 /* StepCountModel.swift */,
+				A472A9302C7FB01A0091DA58 /* Query.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A47383162C80875900ADFBBD /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AC5897D2C7DB3B900543FA8 /* StepCountViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,12 +215,17 @@
 			files = (
 				4AC5897A2C7DB2F700543FA8 /* StepCountDataSource.swift in Sources */,
 				4AC5896C2C7DB1E900543FA8 /* ContentView.swift in Sources */,
+				A41D9C512C807430006B9B97 /* StepCountChart.swift in Sources */,
 				4AC589862C7DCF3300543FA8 /* JSONStepCountDataSource.swift in Sources */,
 				4AC589882C7DCF5100543FA8 /* HealthKitStepCountDataSource.swift in Sources */,
 				4AC589782C7DB22200543FA8 /* StepCountModel.swift in Sources */,
 				4AC589822C7DC8C500543FA8 /* AppConfig.swift in Sources */,
 				4AC5897C2C7DB33C00543FA8 /* StepCountRepository.swift in Sources */,
+				A41D9C4F2C8073D6006B9B97 /* QuerySelector.swift in Sources */,
 				4AC5897E2C7DB3B900543FA8 /* StepCountViewModel.swift in Sources */,
+				A472A9312C7FB01A0091DA58 /* Query.swift in Sources */,
+				A41D9C552C8075D4006B9B97 /* ErrorView.swift in Sources */,
+				A41D9C532C807566006B9B97 /* StepCountDetailView.swift in Sources */,
 				4AC5896A2C7DB1E900543FA8 /* BVOY_DemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
