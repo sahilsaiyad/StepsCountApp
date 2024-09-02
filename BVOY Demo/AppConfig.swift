@@ -22,16 +22,16 @@ struct AppConfig {
         #endif
     }()
     
-    static func getStepCountDataSource() -> StepCountDataSource {
+    static func getHealthDataSource<T: HealthData>(for type: T.Type) -> any HealthDataSource<T> {
         switch environment {
         case .dev:
-            return JSONStepCountDataSource()
+            return JSONDataSource<T>(jsonFileName: String(describing: type))
         case .prod:
             if HKHealthStore.isHealthDataAvailable() {
-                return HealthKitStepCountDataSource()
+                return HealthKitDataSource<T>()
             } else {
                 print("HealthKit is not available on this device. Falling back to JSON data source.")
-                return JSONStepCountDataSource()
+                return JSONDataSource<T>(jsonFileName: String(describing: type))
             }
         }
     }

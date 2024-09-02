@@ -11,7 +11,7 @@ import SwiftUI
 struct BVOY_DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(repository: StepCountRepository(dataSource: AppConfig.getStepCountDataSource()))
+            ContentView()
         }
     }
 }

@@ -8,8 +8,12 @@
 import Foundation
 import HealthKit
 
-class HealthKitStepCountDataSource: StepCountDataSource {
+class HealthKitDataSource<T: HealthData>: HealthDataSource {
+    typealias DataType = T
+    
     private let healthStore = HKHealthStore()
+    private let quantityType = HKQuantityType.quantityType(forIdentifier: T.healthKitTypeIdentifier)!
+    private let unit = T.healthKitUnit
     
     init() {
         requestAuthorization()
@@ -21,9 +25,7 @@ class HealthKitStepCountDataSource: StepCountDataSource {
             return
         }
         
-        let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        
-        healthStore.requestAuthorization(toShare: [], read: [stepCountType]) { success, error in
+        healthStore.requestAuthorization(toShare: [], read: [quantityType]) { success, error in
             if let error = error {
                 print("HealthKit authorization failed: \(error.localizedDescription)")
             } else if success {
@@ -34,14 +36,12 @@ class HealthKitStepCountDataSource: StepCountDataSource {
         }
     }
     
-    func fetchStepCounts(from startDate: Date, to endDate: Date) async throws -> [StepCount] {
-        let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-        
+    func fetchData(from startDate: Date, to endDate: Date) async throws -> [T] {
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
         
         return try await withCheckedThrowingContinuation { continuation in
-            let query = HKSampleQuery(sampleType: stepCountType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, samples, error in
+            let query = HKSampleQuery(sampleType: quantityType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, samples, error in
                 if let error = error {
                     continuation.resume(throwing: error)
                     return
@@ -52,11 +52,12 @@ class HealthKitStepCountDataSource: StepCountDataSource {
                     return
                 }
                 
-                let stepCounts = samples.map { sample in
-                    StepCount(startDate: sample.startDate, endDate: sample.endDate, count: Int(sample.quantity.doubleValue(for: .count())))
+                let healthData = samples.compactMap { sample -> T? in
+                    let value = sample.quantity.doubleValue(for: self.unit)
+                    return T.create(startDate: sample.startDate, endDate: sample.endDate, value: value)
                 }
                 
-                continuation.resume(returning: stepCounts)
+                continuation.resume(returning: healthData)
             }
             
             self.healthStore.execute(query)

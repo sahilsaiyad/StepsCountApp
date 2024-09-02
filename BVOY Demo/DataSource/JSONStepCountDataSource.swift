@@ -7,10 +7,16 @@
 
 import Foundation
 
-class JSONStepCountDataSource: StepCountDataSource {
-    private let jsonFileName = "StepCounts"
+class JSONDataSource<T: HealthData>: HealthDataSource {
+    typealias DataType = T
     
-    private func loadJSONData() -> [StepCount] {
+    private let jsonFileName: String
+    
+    init(jsonFileName: String) {
+        self.jsonFileName = jsonFileName
+    }
+    
+    private func loadJSONData() -> [T] {
         guard let url = Bundle.main.url(forResource: jsonFileName, withExtension: "json"),
               let data = try? Data(contentsOf: url) else {
             return []
@@ -19,11 +25,11 @@ class JSONStepCountDataSource: StepCountDataSource {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         
-        return (try? decoder.decode([StepCount].self, from: data)) ?? []
+        return (try? decoder.decode([T].self, from: data)) ?? []
     }
     
-    func fetchStepCounts(from startDate: Date, to endDate: Date) async throws -> [StepCount] {
-        let allStepCounts = loadJSONData()
-        return allStepCounts.filter { $0.startDate >= startDate && $0.endDate <= endDate }
+    func fetchData(from startDate: Date, to endDate: Date) async throws -> [T] {
+        let allData = loadJSONData()
+        return allData.filter { $0.startDate >= startDate && $0.endDate <= endDate }
     }
 }
