@@ -8,6 +8,7 @@
 import SwiftUI
 
 class HealthDataViewModel<T: HealthData>: ObservableObject {
+    @Published var currentQuery: QueryType = .query1
     @Published var healthData: [T] = []
     @Published var isLoading = false
     @Published var error: Error?
@@ -16,6 +17,12 @@ class HealthDataViewModel<T: HealthData>: ObservableObject {
     
     init(repository: HealthDataRepository<T>) {
         self.repository = repository
+    }
+    
+    func fetchHealthData(for query: QueryType) {
+        currentQuery = query
+        let (startDate, endDate) = query.dateRange
+        fetchHealthData(from: startDate, to: endDate)
     }
     
     func fetchHealthData(from startDate: Date, to endDate: Date) {

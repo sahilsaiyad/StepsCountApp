@@ -16,10 +16,14 @@ struct SleepData: HealthData {
     let count: Double
     var id: Date { startDate }
     
-    static let healthKitTypeIdentifier: HKQuantityTypeIdentifier = .appleStandTime
+    static let healthKitSampleType: HKSampleType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
     static let healthKitUnit: HKUnit = .minute()
     
     static func create(startDate: Date, endDate: Date, value: Double) -> SleepData? {
         return SleepData(startDate: startDate, endDate: endDate, count: Double(value))
+    }
+    
+    static func getRawVal() -> String {
+        return "Sleep Data"
     }
 }

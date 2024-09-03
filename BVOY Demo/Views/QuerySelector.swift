@@ -7,25 +7,36 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct QuerySelector: View {
     @Binding var selectedQuery: QueryType
     let onQuerySelect: (QueryType) -> Void
-
+    
     var body: some View {
-        HStack {
+        Menu {
             ForEach(QueryType.allCases, id: \.self) { queryType in
                 Button(action: {
                     selectedQuery = queryType
                     onQuerySelect(queryType)
                 }) {
-                    Text(queryType.rawValue)
-                        .padding(8)
-                        .background(selectedQuery == queryType ? Color.blue : Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
+                    HStack {
+                        Text(queryType.rawValue)
+                        if selectedQuery == queryType {
+                            Image(systemName: "checkmark")
+                        }
+                    }
                 }
             }
+        } label: {
+            HStack {
+                Text(selectedQuery.rawValue)
+                Image(systemName: "chevron.down")
+            }
+            .padding(10)
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(8)
         }
-        .padding()
     }
 }

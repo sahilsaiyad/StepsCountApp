@@ -14,8 +14,6 @@ class HealthKitDataSource<T: HealthData>: HealthDataSource {
     private let healthStore = HKHealthStore()
     private var authorizationStatus: HealthKitAuthorizationStatus = .notDetermined
     
-    init() {}
-    
     private func requestAuthorization() async throws {
         guard HKHealthStore.isHealthDataAvailable() else {
             throw NSError(domain: "HealthKitError", code: 0, userInfo: [NSLocalizedDescriptionKey: "HealthKit is not available on this device"])
@@ -55,14 +53,23 @@ class HealthKitDataSource<T: HealthData>: HealthDataSource {
                     return
                 }
                 
-                guard let samples = samples as? [HKQuantitySample] else {
+                guard let samples = samples else {
                     continuation.resume(returning: [])
                     return
                 }
-                
+                                
                 let healthData = samples.compactMap { sample -> T? in
-                    let value = sample.quantity.doubleValue(for: T.healthKitUnit)
-                    return T.create(startDate: sample.startDate, endDate: sample.endDate, value: value)
+                    switch sample {
+                        //For quantity samples like steps and heart rate
+                    case let quantitySample as HKQuantitySample:
+                        let value = quantitySample.quantity.doubleValue(for: T.healthKitUnit)
+                        return T.create(startDate: sample.startDate, endDate: sample.endDate, value: value)
+                        //For category samples like sleep
+                    case let categorySample as HKCategorySample:
+                        return T.create(startDate: sample.startDate, endDate: sample.endDate, value: Double(categorySample.value))
+                    default:
+                        return nil
+                    }
                 }
                 
                 continuation.resume(returning: healthData)

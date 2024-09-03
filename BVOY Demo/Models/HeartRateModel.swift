@@ -16,10 +16,14 @@ struct HeartRateData: HealthData {
     let count: Double
     var id: Date { startDate }
     
-    static let healthKitTypeIdentifier: HKQuantityTypeIdentifier = .heartRate
+    static let healthKitSampleType: HKSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)!
     static let healthKitUnit: HKUnit = HKUnit.count().unitDivided(by: .minute())
     
     static func create(startDate: Date, endDate: Date, value: Double) -> HeartRateData? {
         return HeartRateData(startDate: startDate, endDate: endDate, count: Double(value))
+    }
+    
+    static func getRawVal() -> String {
+        return "Heart Rate"
     }
 }
