@@ -2,7 +2,7 @@
 //  StepCountModel.swift
 //  BVOY Demo
 //
-//  Created by Sahil Saiyed on 27/08/24.
+//  Created by Sahil Saiyad on 27/08/24.
 //
 
 import Foundation

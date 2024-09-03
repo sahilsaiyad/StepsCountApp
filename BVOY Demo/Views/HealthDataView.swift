@@ -49,7 +49,7 @@ struct HealthDataView<T: HealthData>: View {
     }
     
     private var healthChartView: some View {
-        VStack(alignment: .leading) {
+        VStack() {
             if viewModel.isLoading {
                 ProgressView()
             } else if let error = viewModel.error {

@@ -53,22 +53,16 @@ struct HealthDataChart<T: HealthData>: View {
             GeometryReader { geometry in
                 Rectangle().fill(.clear).contentShape(Rectangle())
                     .gesture(
-                        DragGesture()
+                        DragGesture(minimumDistance: 0)
                             .onChanged { value in
                                 isTouching = true
                                 updateSelectedData(at: value.location, proxy: proxy, geometry: geometry)
                             }
                             .onEnded { _ in
                                 isTouching = false
+                                selectedData = nil
                             }
                     )
-                    .onTapGesture { location in
-                        isTouching = true
-                        updateSelectedData(at: location, proxy: proxy, geometry: geometry)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            isTouching = false
-                        }
-                    }
                 if let selectedData = selectedData, isTouching {
                     let datePosition = proxy.position(forX: selectedData.startDate) ?? 0
                     let valuePosition = proxy.position(forY: selectedData.count) ?? 0
