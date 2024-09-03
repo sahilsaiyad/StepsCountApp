@@ -137,9 +137,9 @@
 		A47383152C8086F400ADFBBD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4AC589772C7DB22200543FA8 /* StepCountModel.swift */,
 				A472A9302C7FB01A0091DA58 /* Query.swift */,
 				A478EA892C836C51004EBD2A /* HealthData.swift */,
+				4AC589772C7DB22200543FA8 /* StepCountModel.swift */,
 				A478EA8B2C836CCA004EBD2A /* SleepDataModel.swift */,
 				A4170CC02C843E7B00A3C3C2 /* HeartRateModel.swift */,
 			);
