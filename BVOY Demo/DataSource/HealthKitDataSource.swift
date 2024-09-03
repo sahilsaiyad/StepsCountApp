@@ -12,36 +12,44 @@ class HealthKitDataSource<T: HealthData>: HealthDataSource {
     typealias DataType = T
     
     private let healthStore = HKHealthStore()
-    private let quantityType = HKQuantityType.quantityType(forIdentifier: T.healthKitTypeIdentifier)!
-    private let unit = T.healthKitUnit
+    private var authorizationStatus: HealthKitAuthorizationStatus = .notDetermined
     
-    init() {
-        requestAuthorization()
-    }
+    init() {}
     
-    private func requestAuthorization() {
+    private func requestAuthorization() async throws {
         guard HKHealthStore.isHealthDataAvailable() else {
-            print("HealthKit is not available on this device")
-            return
+            throw NSError(domain: "HealthKitError", code: 0, userInfo: [NSLocalizedDescriptionKey: "HealthKit is not available on this device"])
         }
         
-        healthStore.requestAuthorization(toShare: [], read: [quantityType]) { success, error in
-            if let error = error {
-                print("HealthKit authorization failed: \(error.localizedDescription)")
-            } else if success {
-                print("HealthKit authorization succeeded")
-            } else {
-                print("HealthKit authorization denied")
-            }
+        do {
+            try await healthStore.requestAuthorization(toShare: [], read: [T.healthKitSampleType])
+            authorizationStatus = .authorized
+            print("HealthKit authorization succeeded")
+        } catch {
+            authorizationStatus = .denied
+            throw error
+        }
+    }
+    
+    private func checkAuthorization() async throws {
+        switch authorizationStatus {
+        case .notDetermined:
+            try await requestAuthorization()
+        case .authorized:
+            return
+        case .denied:
+            throw NSError(domain: "HealthKitError", code: 1, userInfo: [NSLocalizedDescriptionKey: "HealthKit authorization has been denied"])
         }
     }
     
     func fetchData(from startDate: Date, to endDate: Date) async throws -> [T] {
+        try await checkAuthorization()
+        
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
         
         return try await withCheckedThrowingContinuation { continuation in
-            let query = HKSampleQuery(sampleType: quantityType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, samples, error in
+            let query = HKSampleQuery(sampleType: T.healthKitSampleType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { _, samples, error in
                 if let error = error {
                     continuation.resume(throwing: error)
                     return
@@ -53,7 +61,7 @@ class HealthKitDataSource<T: HealthData>: HealthDataSource {
                 }
                 
                 let healthData = samples.compactMap { sample -> T? in
-                    let value = sample.quantity.doubleValue(for: self.unit)
+                    let value = sample.quantity.doubleValue(for: T.healthKitUnit)
                     return T.create(startDate: sample.startDate, endDate: sample.endDate, value: value)
                 }
                 
@@ -63,4 +71,10 @@ class HealthKitDataSource<T: HealthData>: HealthDataSource {
             self.healthStore.execute(query)
         }
     }
+}
+
+enum HealthKitAuthorizationStatus {
+    case notDetermined
+    case authorized
+    case denied
 }
