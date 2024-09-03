@@ -74,7 +74,7 @@ struct HealthDataChart<T: HealthData>: View {
                         .padding(6)
                         .background(Color.blue)
                         .cornerRadius(6)
-                        .offset(x: datePosition + 20, y: valuePosition - 20)
+                        .offset(x: datePosition + 20, y: valuePosition - 25)
                 }
             }
         }

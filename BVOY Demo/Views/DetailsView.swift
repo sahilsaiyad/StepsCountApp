@@ -1,12 +1,12 @@
 //
-//  HealthDataDetailView.swift
+//  DetailsView.swift
 //  BVOY Demo
 //
 //  Created by Sahil S on 01/09/24.
 //
 import SwiftUI
 
-struct HealthDataDetailView: View {
+struct DetailsView: View {
     let healthData: any HealthData
     
     private let itemFormatter: DateFormatter = {

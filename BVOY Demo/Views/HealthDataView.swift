@@ -13,7 +13,7 @@ struct HealthDataView<T: HealthData>: View {
     @State private var isTouching = false
     
     init() {
-        let repository = HealthDataRepository(dataSource: AppConfig.getHealthDataSource(for: T.self))
+        let repository = HealthDataRepository(primaryDataSource: AppConfig.getHealthDataSource(for: T.self))
         _viewModel = StateObject(wrappedValue: HealthDataViewModel(repository: repository))
     }
 
@@ -35,7 +35,7 @@ struct HealthDataView<T: HealthData>: View {
                 healthChartView
                 
                 if let selectedData = selectedData, isTouching {
-                    HealthDataDetailView(healthData: selectedData)
+                    DetailsView(healthData: selectedData)
                 }
                 
                 Spacer()

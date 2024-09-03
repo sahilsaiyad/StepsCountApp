@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BVOY_DemoApp: App {
+    let persistentContainer = CDManager.shared.persistentContainer
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistentContainer.viewContext)
         }
     }
 }

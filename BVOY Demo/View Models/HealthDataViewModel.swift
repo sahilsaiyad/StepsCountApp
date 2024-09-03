@@ -8,7 +8,12 @@
 import SwiftUI
 
 class HealthDataViewModel<T: HealthData>: ObservableObject {
-    @Published var currentQuery: QueryType = .query1
+    @Published var currentQuery: QueryType {
+        didSet {
+            // Save to UserDefaults whenever currentQuery changes
+            UserDefaults.standard.setValue(currentQuery.rawValue, forKey: "\(T.getRawVal()) currentQuery")
+        }
+    }
     @Published var healthData: [T] = []
     @Published var isLoading = false
     @Published var error: Error?
@@ -17,6 +22,14 @@ class HealthDataViewModel<T: HealthData>: ObservableObject {
     
     init(repository: HealthDataRepository<T>) {
         self.repository = repository
+        
+        // Load currentQuery from last session
+        if let savedQueryRawValue = UserDefaults.standard.string(forKey: "\(T.getRawVal()) currentQuery"),
+           let savedQuery = QueryType(rawValue: savedQueryRawValue) {
+            self.currentQuery = savedQuery
+        } else {
+            self.currentQuery = .query1
+        }
     }
     
     func fetchHealthData(for query: QueryType) {

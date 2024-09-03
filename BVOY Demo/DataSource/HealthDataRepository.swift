@@ -8,14 +8,29 @@
 import Foundation
 
 class HealthDataRepository<T: HealthData> {
-    private let dataSource: any HealthDataSource<T>
+    private let primaryDataSource: any HealthDataSource<T>
+    private let cdDataSource: CDDataSource<T>
     
-    init(dataSource: any HealthDataSource<T>) {
-        self.dataSource = dataSource
+    init(primaryDataSource: any HealthDataSource<T>) {
+        self.primaryDataSource = primaryDataSource
+        self.cdDataSource = CDDataSource<T>()
     }
     
     func fetchData(from startDate: Date, to endDate: Date) async throws -> [T] {
-        return try await dataSource.fetchData(from: startDate, to: endDate)
+        // First, try to fetch from Core Data
+        let cachedData = try await cdDataSource.fetchData(from: startDate, to: endDate)
+        
+        if !cachedData.isEmpty {
+            return cachedData
+        }
+        
+        // If no cached data, fetch from primary source
+        let freshData = try await primaryDataSource.fetchData(from: startDate, to: endDate)
+        
+        // Cache the fresh data
+        try await cdDataSource.saveData(freshData, from: startDate, to: endDate)
+        
+        return freshData
     }
 }
 

@@ -19,7 +19,7 @@
 		A4170CC12C843E7B00A3C3C2 /* HeartRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4170CC02C843E7B00A3C3C2 /* HeartRateModel.swift */; };
 		A4170CE52C844E4400A3C3C2 /* HealthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4170CE42C844E4400A3C3C2 /* HealthDataSource.swift */; };
 		A4170CE72C84504200A3C3C2 /* HealthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4170CE62C84504200A3C3C2 /* HealthDataRepository.swift */; };
-		A4170CE92C8457EF00A3C3C2 /* HealthDataDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4170CE82C8457EF00A3C3C2 /* HealthDataDetailView.swift */; };
+		A4170CE92C8457EF00A3C3C2 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4170CE82C8457EF00A3C3C2 /* DetailsView.swift */; };
 		A4170CEB2C84580C00A3C3C2 /* HealthDataChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4170CEA2C84580C00A3C3C2 /* HealthDataChart.swift */; };
 		A41D9C4F2C8073D6006B9B97 /* QuerySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C4E2C8073D5006B9B97 /* QuerySelector.swift */; };
 		A41D9C552C8075D4006B9B97 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D9C542C8075D4006B9B97 /* ErrorView.swift */; };
@@ -28,6 +28,11 @@
 		A478EA882C836C18004EBD2A /* HealthDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478EA872C836C18004EBD2A /* HealthDataViewModel.swift */; };
 		A478EA8A2C836C51004EBD2A /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478EA892C836C51004EBD2A /* HealthData.swift */; };
 		A478EA8C2C836CCA004EBD2A /* SleepDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478EA8B2C836CCA004EBD2A /* SleepDataModel.swift */; };
+		A4E1C8D22C870D700008AE09 /* HealthDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4E1C8D02C870D700008AE09 /* HealthDataModel.xcdatamodeld */; };
+		A4E1C8DC2C870E680008AE09 /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1C8DB2C870E680008AE09 /* CDManager.swift */; };
+		A4E1C8DE2C870EB10008AE09 /* CDDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1C8DD2C870EB10008AE09 /* CDDataSource.swift */; };
+		A4E1C8E92C8763400008AE09 /* QueryResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1C8E72C8763400008AE09 /* QueryResult+CoreDataClass.swift */; };
+		A4E1C8EA2C8763400008AE09 /* QueryResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1C8E82C8763400008AE09 /* QueryResult+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +51,7 @@
 		A4170CC02C843E7B00A3C3C2 /* HeartRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateModel.swift; sourceTree = "<group>"; };
 		A4170CE42C844E4400A3C3C2 /* HealthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataSource.swift; sourceTree = "<group>"; };
 		A4170CE62C84504200A3C3C2 /* HealthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepository.swift; sourceTree = "<group>"; };
-		A4170CE82C8457EF00A3C3C2 /* HealthDataDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataDetailView.swift; sourceTree = "<group>"; };
+		A4170CE82C8457EF00A3C3C2 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		A4170CEA2C84580C00A3C3C2 /* HealthDataChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataChart.swift; sourceTree = "<group>"; };
 		A41D9C4E2C8073D5006B9B97 /* QuerySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuerySelector.swift; sourceTree = "<group>"; };
 		A41D9C542C8075D4006B9B97 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -55,6 +60,11 @@
 		A478EA872C836C18004EBD2A /* HealthDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataViewModel.swift; sourceTree = "<group>"; };
 		A478EA892C836C51004EBD2A /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		A478EA8B2C836CCA004EBD2A /* SleepDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataModel.swift; sourceTree = "<group>"; };
+		A4E1C8D12C870D700008AE09 /* HealthDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthDataModel.xcdatamodel; sourceTree = "<group>"; };
+		A4E1C8DB2C870E680008AE09 /* CDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
+		A4E1C8DD2C870EB10008AE09 /* CDDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataSource.swift; sourceTree = "<group>"; };
+		A4E1C8E72C8763400008AE09 /* QueryResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryResult+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A4E1C8E82C8763400008AE09 /* QueryResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +97,8 @@
 		4AC589682C7DB1E900543FA8 /* BVOY Demo */ = {
 			isa = PBXGroup;
 			children = (
+				A4E1C8E72C8763400008AE09 /* QueryResult+CoreDataClass.swift */,
+				A4E1C8E82C8763400008AE09 /* QueryResult+CoreDataProperties.swift */,
 				A47383162C80875900ADFBBD /* View Models */,
 				A47383152C8086F400ADFBBD /* Models */,
 				A47383142C8086DA00ADFBBD /* DataSource */,
@@ -99,6 +111,9 @@
 				4AC5896D2C7DB1EA00543FA8 /* Assets.xcassets */,
 				4AC5896F2C7DB1EA00543FA8 /* Preview Content */,
 				4AC5897F2C7DC61600543FA8 /* StepCount.json */,
+				A4E1C8D02C870D700008AE09 /* HealthDataModel.xcdatamodeld */,
+				A4E1C8DB2C870E680008AE09 /* CDManager.swift */,
+				A4E1C8DD2C870EB10008AE09 /* CDDataSource.swift */,
 			);
 			path = "BVOY Demo";
 			sourceTree = "<group>";
@@ -116,7 +131,7 @@
 			children = (
 				A41D9C4E2C8073D5006B9B97 /* QuerySelector.swift */,
 				A41D9C542C8075D4006B9B97 /* ErrorView.swift */,
-				A4170CE82C8457EF00A3C3C2 /* HealthDataDetailView.swift */,
+				A4170CE82C8457EF00A3C3C2 /* DetailsView.swift */,
 				A4170CEA2C84580C00A3C3C2 /* HealthDataChart.swift */,
 				A46ED7CB2C85EAA5003CC027 /* HealthDataView.swift */,
 			);
@@ -229,17 +244,22 @@
 				A4170CC12C843E7B00A3C3C2 /* HeartRateModel.swift in Sources */,
 				A478EA8C2C836CCA004EBD2A /* SleepDataModel.swift in Sources */,
 				A4170CE52C844E4400A3C3C2 /* HealthDataSource.swift in Sources */,
+				A4E1C8E92C8763400008AE09 /* QueryResult+CoreDataClass.swift in Sources */,
+				A4E1C8EA2C8763400008AE09 /* QueryResult+CoreDataProperties.swift in Sources */,
 				4AC589862C7DCF3300543FA8 /* JSONDataSource.swift in Sources */,
+				A4E1C8D22C870D700008AE09 /* HealthDataModel.xcdatamodeld in Sources */,
 				4AC589882C7DCF5100543FA8 /* HealthKitDataSource.swift in Sources */,
 				A4170CEB2C84580C00A3C3C2 /* HealthDataChart.swift in Sources */,
 				4AC589782C7DB22200543FA8 /* StepCountModel.swift in Sources */,
 				A478EA882C836C18004EBD2A /* HealthDataViewModel.swift in Sources */,
+				A4E1C8DE2C870EB10008AE09 /* CDDataSource.swift in Sources */,
 				4AC589822C7DC8C500543FA8 /* AppConfig.swift in Sources */,
 				A41D9C4F2C8073D6006B9B97 /* QuerySelector.swift in Sources */,
 				A478EA8A2C836C51004EBD2A /* HealthData.swift in Sources */,
-				A4170CE92C8457EF00A3C3C2 /* HealthDataDetailView.swift in Sources */,
+				A4170CE92C8457EF00A3C3C2 /* DetailsView.swift in Sources */,
 				A472A9312C7FB01A0091DA58 /* Query.swift in Sources */,
 				A41D9C552C8075D4006B9B97 /* ErrorView.swift in Sources */,
+				A4E1C8DC2C870E680008AE09 /* CDManager.swift in Sources */,
 				A46ED7CC2C85EAA5003CC027 /* HealthDataView.swift in Sources */,
 				A4170CE72C84504200A3C3C2 /* HealthDataRepository.swift in Sources */,
 				4AC5896A2C7DB1E900543FA8 /* BVOY_DemoApp.swift in Sources */,
@@ -456,6 +476,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A4E1C8D02C870D700008AE09 /* HealthDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A4E1C8D12C870D700008AE09 /* HealthDataModel.xcdatamodel */,
+			);
+			currentVersion = A4E1C8D12C870D700008AE09 /* HealthDataModel.xcdatamodel */;
+			name = HealthDataModel.xcdatamodeld;
+			path = "/Users/jimjam/Desktop/StepsCountApp/BVOY Demo/HealthDataModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4AC5895E2C7DB1E900543FA8 /* Project object */;
 }
