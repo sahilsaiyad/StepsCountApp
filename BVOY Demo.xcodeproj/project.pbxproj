@@ -92,13 +92,13 @@
 				A47383142C8086DA00ADFBBD /* DataSource */,
 				A47383132C8086C600ADFBBD /* Views */,
 				4AC589842C7DCEAA00543FA8 /* BVOY Demo.entitlements */,
+				4AC589812C7DC8C500543FA8 /* AppConfig.swift */,
 				4AC5896B2C7DB1E900543FA8 /* ContentView.swift */,
 				4AC589832C7DCE7B00543FA8 /* BVOY-Demo-Info.plist */,
 				4AC589692C7DB1E900543FA8 /* BVOY_DemoApp.swift */,
 				4AC5896D2C7DB1EA00543FA8 /* Assets.xcassets */,
 				4AC5896F2C7DB1EA00543FA8 /* Preview Content */,
 				4AC5897F2C7DC61600543FA8 /* StepCount.json */,
-				4AC589812C7DC8C500543FA8 /* AppConfig.swift */,
 			);
 			path = "BVOY Demo";
 			sourceTree = "<group>";
