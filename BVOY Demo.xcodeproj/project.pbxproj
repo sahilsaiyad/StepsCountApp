@@ -97,8 +97,7 @@
 		4AC589682C7DB1E900543FA8 /* BVOY Demo */ = {
 			isa = PBXGroup;
 			children = (
-				A4E1C8E72C8763400008AE09 /* QueryResult+CoreDataClass.swift */,
-				A4E1C8E82C8763400008AE09 /* QueryResult+CoreDataProperties.swift */,
+				A4E1C8EB2C8780F50008AE09 /* CoreData */,
 				A47383162C80875900ADFBBD /* View Models */,
 				A47383152C8086F400ADFBBD /* Models */,
 				A47383142C8086DA00ADFBBD /* DataSource */,
@@ -112,8 +111,6 @@
 				4AC5896F2C7DB1EA00543FA8 /* Preview Content */,
 				4AC5897F2C7DC61600543FA8 /* StepCount.json */,
 				A4E1C8D02C870D700008AE09 /* HealthDataModel.xcdatamodeld */,
-				A4E1C8DB2C870E680008AE09 /* CDManager.swift */,
-				A4E1C8DD2C870EB10008AE09 /* CDDataSource.swift */,
 			);
 			path = "BVOY Demo";
 			sourceTree = "<group>";
@@ -141,6 +138,7 @@
 		A47383142C8086DA00ADFBBD /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				A4E1C8DD2C870EB10008AE09 /* CDDataSource.swift */,
 				4AC589872C7DCF5100543FA8 /* HealthKitDataSource.swift */,
 				4AC589852C7DCF3300543FA8 /* JSONDataSource.swift */,
 				A4170CE62C84504200A3C3C2 /* HealthDataRepository.swift */,
@@ -167,6 +165,16 @@
 				A478EA872C836C18004EBD2A /* HealthDataViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		A4E1C8EB2C8780F50008AE09 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A4E1C8E72C8763400008AE09 /* QueryResult+CoreDataClass.swift */,
+				A4E1C8E82C8763400008AE09 /* QueryResult+CoreDataProperties.swift */,
+				A4E1C8DB2C870E680008AE09 /* CDManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

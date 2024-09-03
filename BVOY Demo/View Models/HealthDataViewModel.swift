@@ -10,7 +10,6 @@ import SwiftUI
 class HealthDataViewModel<T: HealthData>: ObservableObject {
     @Published var currentQuery: QueryType {
         didSet {
-            // Save to UserDefaults whenever currentQuery changes
             UserDefaults.standard.setValue(currentQuery.rawValue, forKey: "\(T.getRawVal()) currentQuery")
         }
     }
