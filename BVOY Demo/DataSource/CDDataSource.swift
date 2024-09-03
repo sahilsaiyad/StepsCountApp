@@ -12,6 +12,8 @@ class CDDataSource<T: HealthData>: HealthDataSource {
     private let cdManager: CDManager = .shared
 
     func fetchData(from startDate: Date, to endDate: Date) async throws -> [T] {
+        guard let modelURL = Bundle.main.url(forResource: "HealthDataModel", withExtension: "momd") else { return [] }
+        
         let context = cdManager.newBackgroundContext()
         
         return try await context.perform {
@@ -31,6 +33,8 @@ class CDDataSource<T: HealthData>: HealthDataSource {
     }
 
     func saveData(_ data: [T], from startDate: Date, to endDate: Date) async throws {
+        guard let modelURL = Bundle.main.url(forResource: "HealthDataModel", withExtension: "momd") else { return }
+        
         let context = cdManager.newBackgroundContext()
         
         try await context.perform {

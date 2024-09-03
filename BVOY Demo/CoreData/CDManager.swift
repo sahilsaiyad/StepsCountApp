@@ -9,14 +9,16 @@ import CoreData
 
 class CDManager {
     static let shared = CDManager()
-    
+
     private init() {}
+    var status: CDInitialisedStatus = .success
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "HealthDataModel")
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")
+                self.status = .failure
             }
         }
         return container
@@ -40,4 +42,9 @@ class CDManager {
     func newBackgroundContext() -> NSManagedObjectContext {
         return persistentContainer.newBackgroundContext()
     }
+}
+
+enum CDInitialisedStatus {
+    case success
+    case failure
 }
